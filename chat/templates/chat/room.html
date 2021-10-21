@@ -10,11 +10,12 @@
 <body>
     <div id="wrapper">
         <div id="menu">
-            <p class="welcome">Room "{{ room_name }}"<b></b></p>
+            <p class="welcome">Room "{{ room_name }}"</p>
             <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
         </div>
 
         <div id="chatbox"></div>
+
         <div class="input">
             <input id="chat-message-input" type="text"><br>
             <input id="chat-message-submit" type="button" value="Send">
@@ -36,7 +37,15 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chatbox').value += (data.message + '\n');
+            console.log(data.user === '{{ request.user }}')
+            let message = document.createElement('div')
+            let chatbox = document.querySelector('#chatbox')
+            message.className = "message"
+            message.id = "user"
+            message.innerHTML = data.message
+            chatbox.insertAdjacentElement('beforeend', message)
+            chatbox.value += (data.message + '\n');
+            {#chatbox.scrollTop(chatbox.scrollHeight);#}
         };
 
         chatSocket.onclose = function(e) {
