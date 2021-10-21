@@ -1,13 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{% static 'chat/chat.css' %}">
     <title>Chat Room</title>
 </head>
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+    <div id="wrapper">
+        <div id="menu">
+            <p class="welcome">Room "{{ room_name }}"<b></b></p>
+            <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+        </div>
+
+        <div id="chatbox"></div>
+        <div class="input">
+            <input id="chat-message-input" type="text"><br>
+            <input id="chat-message-submit" type="button" value="Send">
+        </div>
+    </div>
+
+
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
@@ -22,7 +36,7 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            document.querySelector('#chatbox').value += (data.message + '\n');
         };
 
         chatSocket.onclose = function(e) {
