@@ -45,7 +45,7 @@
             message.innerHTML = data.message
             chatbox.insertAdjacentElement('beforeend', message)
             chatbox.value += (data.message + '\n');
-            {#chatbox.scrollTop(chatbox.scrollHeight);#}
+            message.scrollIntoView(false)
         };
 
         chatSocket.onclose = function(e) {

@@ -54,7 +54,7 @@ a {
     padding: 10px;
     background: #fff;
     height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100%;
     border: 1px solid #a7a7a7;
     border-radius: 4px;
@@ -66,6 +66,10 @@ a {
     padding: 4px 8px;
     font-weight: bold;
     border: none;
+}
+
+.message {
+    width: 500px;
 }
 
 .message #user {
