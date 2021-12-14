@@ -11,7 +11,7 @@
     <div id="wrapper">
         <div id="menu">
             <p class="welcome">Room "{{ room_name }}"</p>
-            <p class="logout"><a id="exit" href="/">Exit Chat</a></p>
+            <p class="logout"><a id="exit" href="{% url 'exit' %}">Exit Chat</a></p>
         </div>
 
         <div id="chatbox"></div>

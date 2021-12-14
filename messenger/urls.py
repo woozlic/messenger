@@ -7,4 +7,5 @@ urlpatterns = [
     path('chat/', include('chat.urls')),
     path('', views.index),
     path('admin/', admin.site.urls),
+    path('exit/', views.exit, name='exit')
 ]
