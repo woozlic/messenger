@@ -11,7 +11,7 @@
     <div id="wrapper">
         <div id="menu">
             <p class="welcome">Room "{{ room_name }}"</p>
-            <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+            <p class="logout"><a id="exit" href="{% url 'exit' %}">Exit Chat</a></p>
         </div>
 
         <div id="chatbox"></div>
@@ -37,15 +37,22 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            console.log(data.user === '{{ request.user }}')
-            let message = document.createElement('div')
-            let chatbox = document.querySelector('#chatbox')
-            message.className = "message"
-            message.id = "user"
-            message.innerHTML = data.message
-            chatbox.insertAdjacentElement('beforeend', message)
-            chatbox.value += (data.message + '\n');
-            message.scrollIntoView(false)
+            if (data.message === ''){
+                alert('Please enter a message')
+            }
+            else if (data.message.length > 255) {
+                alert('Your message is too long!')
+            }
+            else {
+                let message = document.createElement('div')
+                let chatbox = document.querySelector('#chatbox')
+                message.className = "message"
+                message.id = "user"
+                message.innerHTML = '<b>Anonymous: </b>' + data.message
+                chatbox.insertAdjacentElement('beforeend', message)
+                chatbox.value += (data.message + '\n');
+                message.scrollIntoView(false)
+            }
         };
 
         chatSocket.onclose = function(e) {
