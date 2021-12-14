@@ -37,12 +37,11 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            console.log(data.user === '{{ request.user }}')
             let message = document.createElement('div')
             let chatbox = document.querySelector('#chatbox')
             message.className = "message"
             message.id = "user"
-            message.innerHTML = data.message
+            message.innerHTML = '<b>Anonymous: </b>' + data.message
             chatbox.insertAdjacentElement('beforeend', message)
             chatbox.value += (data.message + '\n');
             message.scrollIntoView(false)

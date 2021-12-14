@@ -48,7 +48,6 @@ a {
 }
 
 #chatbox {
-    text-align: left;
     margin: 0 auto;
     margin-bottom: 25px;
     padding: 10px;
@@ -69,11 +68,14 @@ a {
 }
 
 .message {
-    width: 500px;
-}
-
-.message #user {
-    text-align: right;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 10px;
+    background: #A8DDFD;
+    word-wrap: break-word;
+    height: auto;
+    text-align: left;
+    border: 1px solid #97C6E3;
 }
 
 a#exit {
