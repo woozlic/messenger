@@ -5,8 +5,7 @@
 }
 
 body {
-    margin: 20px auto;
-    font-weight: 300;
+    margin: auto;
 }
 
 a {
@@ -15,10 +14,8 @@ a {
 
 #wrapper {
     margin: 0 auto;
-    padding-bottom: 25px;
     background: #9C6AD6;
     width: 100%;
-    max-width: 500px;
 }
 
 
@@ -47,12 +44,15 @@ a {
     font-weight: bold;
 }
 
+#chat-message-input {
+    width: 50%;
+}
+
 #chatbox {
+    height: calc(100vh - 142px);
     margin: 0 auto;
-    margin-bottom: 25px;
     padding: 10px;
     background: #fff;
-    height: 300px;
     overflow-y: scroll;
     width: 100%;
     border: 1px solid #a7a7a7;
