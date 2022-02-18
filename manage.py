@@ -3,6 +3,7 @@
 import os
 import subprocess
 import sys
+from redis import Redis
 
 
 def main():
@@ -10,7 +11,12 @@ def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'messenger.settings')
     try:
         from django.core.management import execute_from_command_line
-        subprocess.call(['docker', 'run', '-p', '6379:6379', '-d', 'redis:5'])
+        redis_host = '127.0.0.1'
+        redis_port = '6379'
+        r = Redis(redis_host, redis_port)
+        redis_ping = r.ping()
+        if not redis_ping:
+            subprocess.call(['docker', 'run', '-p', '6379:6379', '-d', 'redis:5'])
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
