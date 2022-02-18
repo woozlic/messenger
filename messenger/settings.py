@@ -65,10 +65,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'messenger.urls'
 
+prev_dir = Path(__file__).parent.parent.absolute()
+general_templates = os.path.join(prev_dir, 'templates')
+main_templates = os.path.join(Path(__file__).parent.absolute(), 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [main_templates, general_templates],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,9 +84,6 @@ TEMPLATES = [
         },
     },
 ]
-
-prev_dir = os.path.join(Path(__file__).parent.parent.absolute(), 'templates')
-TEMPLATES[0]['DIRS'].append(prev_dir)
 
 WSGI_APPLICATION = 'messenger.wsgi.application'
 
