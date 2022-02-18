@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os.path
 from pathlib import Path
-from secrets import SECRET_KEY
+from .secret import SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,6 +80,9 @@ TEMPLATES = [
         },
     },
 ]
+
+prev_dir = os.path.join(Path(__file__).parent.parent.absolute(), 'templates')
+TEMPLATES[0]['DIRS'].append(prev_dir)
 
 WSGI_APPLICATION = 'messenger.wsgi.application'
 

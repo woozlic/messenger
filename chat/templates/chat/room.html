@@ -1,13 +1,13 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8"/>
+
+{% block css %}
     <link rel="stylesheet" href="{% static 'chat/chat.css' %}">
-    <title>Chat Room</title>
-</head>
-<body>
+{% endblock %}
+
+{% block title %}Chat Room{% endblock %}
+{% block body %}
     <div id="wrapper">
         <div id="menu">
             <p class="welcome">Room "{{ room_name }}"</p>
@@ -22,7 +22,9 @@
         </div>
     </div>
 
+{% endblock %}
 
+{% block extra_js %}
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
@@ -75,5 +77,4 @@
             messageInputDom.value = '';
         };
     </script>
-</body>
-</html>
+{% endblock %}
