@@ -4,10 +4,11 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
+        <nav class="navbar navbar-nav container-fluid">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'chat' %}">Chat</a>
             </li>
-        </ul>
+            <a href="{% url 'login' %}"><button class="btn btn-light">Login/Register</button></a>
+        </nav>
     </div>
 </nav>

@@ -3,6 +3,8 @@
 import os
 import subprocess
 import sys
+
+import redis.exceptions
 from redis import Redis
 
 
@@ -14,9 +16,12 @@ def main():
         redis_host = '127.0.0.1'
         redis_port = '6379'
         r = Redis(redis_host, redis_port)
-        redis_ping = r.ping()
-        if not redis_ping:
+        try:
+            r.ping()
+        except redis.exceptions.ConnectionError:
             subprocess.call(['docker', 'run', '-p', '6379:6379', '-d', 'redis:5'])
+        if not r.ping():
+            raise ValueError('Can not connect to Redis')
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
