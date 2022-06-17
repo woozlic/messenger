@@ -11,7 +11,10 @@ services:
       - cache:/data
   web:
     build: .
-    command: python src/manage.py runserver 0.0.0.0:7777
+    command: > 
+      bash -c "python src/manage.py migrate --noinput
+      && python src/manage.py initadmin
+      && python src/manage.py runserver 0.0.0.0:7777"
     volumes:
       - .:/code
     ports:
