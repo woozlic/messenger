@@ -8,39 +8,36 @@
 {% block title %}Chat{% endblock %}
 
 {% block body %}
-<div class="card">
-    <div class='row justify-content-center card-body'>
-        <div class='col-sm-3 col-md-12 col-lg-6'>
-            <form>
+    <div class="container">
+        <div class='row justify-content-center card-body'>
+            <div class='col-sm-3 col-md-12 col-lg-6'>
                 <div class="form-group">
-                    <label for="room-name-input" >What chat room would you like to enter?</label>
+                    <label for="room-name-input">What chat room would you like to enter?</label>
                     <input style="margin-top: 10px;" class="form-control" id="room-name-input" type="text" size="20">
-                    <input style="margin-top: 10px;" class="btn btn-primary" id="room-name-submit" type="submit" value="Enter">
+                    <input style="margin-top: 10px;" class="btn btn-primary" id="room-name-submit" type="submit"
+                           value="Enter">
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block extra_js %}
     <script>
         document.querySelector('#room-name-input').focus();
-        document.querySelector('#room-name-input').onkeyup = function(e) {
+        document.querySelector('#room-name-input').onkeyup = function (e) {
             if (e.keyCode === 13) {  // enter, return
                 document.querySelector('#room-name-submit').click();
             }
         };
 
-        document.querySelector('#room-name-submit').onclick = function(e) {
+        document.querySelector('#room-name-submit').onclick = function (e) {
             var roomName = document.querySelector('#room-name-input').value;
-            if (roomName === ''){
+            if (roomName === '') {
                 alert('Please enter a room name');
-            }
-            else if (roomName.length > 20){
+            } else if (roomName.length > 20) {
                 alert('Room name must be maximum 20 characters');
-            }
-            else {
+            } else {
                 window.location.pathname = '/chat/' + roomName + '/';
             }
         };
