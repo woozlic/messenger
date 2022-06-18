@@ -50,7 +50,7 @@
                 let chatbox = document.querySelector('#chatbox')
                 message.className = "message"
                 message.id = "user"
-                message.innerHTML = '<b>Anonymous: </b>' + data.message
+                message.innerHTML = '<b>{{ user }}: </b>' + data.message
                 chatbox.insertAdjacentElement('beforeend', message)
                 chatbox.value += (data.message + '\n');
                 message.scrollIntoView(false)

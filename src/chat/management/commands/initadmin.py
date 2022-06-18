@@ -11,7 +11,8 @@ class Command(BaseCommand):
             for username in ADMINS:
                 password = 'admin'
                 self.stdout.write('Creating account for %s' % username)
-                admin = User.objects.create_superuser(username=username, password=password)
+                admin = User.objects.create_superuser(username=username, password=password, first_name='Ivan',
+                                                      last_name='Ivanov')
                 admin.is_active = True
                 admin.is_admin = True
                 admin.save()
