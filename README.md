@@ -11,7 +11,7 @@ git clone https://github.com/woozlic/messenger.git
 
 ## Set environment variables
 
-Create file named ".env" and put a random string in SECRET_KEY:
+Create file named ".env" in this directory and put a random string in SECRET_KEY:
 ```bash
 SECRET_KEY=there_must_be_random_string
 ```
@@ -19,7 +19,7 @@ SECRET_KEY=there_must_be_random_string
 ## Run
 
 ```bash
-docker-compose up --build
+docker-compose up -d --build
 ```
 
 ### IMPORTANT!
@@ -32,4 +32,4 @@ docker-compose up --build
 
 ## Use
 
-Visit [Online Messenger](http://127.0.0.1:7777) in your favorite browser
+Visit [http://127.0.0.1:7777](http://127.0.0.1:7777) in your favorite browser
